@@ -14,6 +14,7 @@
 .inner {
     width: var(--default-layout-width);
     height: 100%;
+    padding: 0 24px 0 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -26,10 +27,21 @@
     }
 }
 
+.search-title {
+    padding: 5px 12px;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: rgba(22, 24, 35, 0.5);
+}
+
+.search,
+.search-result {
+    width: 361px;
+}
+
 .search {
     display: flex;
     position: relative;
-    width: 361px;
     height: var(--search-height);
     background-color: #f1f1f2;
     border: 1.5px solid transparent;
@@ -89,4 +101,51 @@
     &:active {
         background-color: rgba(22, 24, 35, 0.06);
     }
+}
+
+// Action
+.actions {
+    display: flex;
+    height: 36px;
+    align-items: center;
+}
+
+.action-btn {
+    display: flex;
+    font-size: 2.2rem;
+    background-color: transparent;
+    color: var(--text-color);
+    margin-left: 22px;
+    cursor: pointer;
+}
+
+.message-icon {
+    align-self: center;
+    margin-left: 4px;
+}
+
+.inbox-icon {
+    align-self: center;
+}
+
+.custom-menu-icon {
+    position: relative;
+    top: 4px;
+}
+
+.user-avatar {
+    margin-left: 24px;
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.more-btn {
+    font-size: 2rem;
+    margin-left: 24px;
+    padding: 4px;
+    background-color: transparent;
+    cursor: pointer;
 }
