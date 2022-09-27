@@ -5,10 +5,12 @@ import TippyHeadless from '@tippyjs/react/headless'
 import { faCircleXmark, faSpinner } from '@fortawesome/free-solid-svg-icons'
 
 import 'tippy.js/dist/tippy.css'
+import * as searchServices from '~/apiServices/searchServices'
 import PopperWrapper from '~/components/Popper'
 import AccountItem from '~/components/AccountItem'
 import styles from './Search.module.scss'
 import { SearchIcon } from '~/components/Icons'
+import { useDebounce } from '~/hooks'
 
 const cx = classNames.bind(styles)
 
@@ -18,22 +20,26 @@ function Search() {
     const [showResult, setShowResult] = useState(true)
     const [loading, setLoading] = useState(false)
 
+    const debounced = useDebounce(searchValue, 800)
+
     const searchRef = useRef()
 
     useEffect(() => {
-        if (!searchValue.trim()) {
+        if (!debounced.trim()) {
             setSearchResult([])
             return
         }
-        setLoading(true)
-        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(searchValue)}&type=less`)
-            .then((res) => res.json())
-            .then((res) => {
-                setSearchResult(res.data)
-                setLoading(false)
-            })
-            .catch(() => setLoading(false))
-    }, [searchValue])
+        const fetchApi = async () => {
+            setLoading(true)
+
+            const result = await searchServices.search(debounced)
+
+            setSearchResult(result)
+
+            setLoading(false)
+        }
+        fetchApi()
+    }, [debounced])
 
     const handleHideResult = () => {
         setShowResult(false)
