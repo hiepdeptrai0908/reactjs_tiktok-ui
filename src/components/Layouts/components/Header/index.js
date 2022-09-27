@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Tippy from '@tippyjs/react'
 import { faEllipsisVertical, faPlus, faChartLine, faRightToBracket } from '@fortawesome/free-solid-svg-icons'
 
+import configRoutes from '~/config/routes'
 import 'tippy.js/dist/tippy.css'
 import styles from './Header.module.scss'
 import images from '~/assets/images'
@@ -20,12 +21,13 @@ import {
 } from '~/components/Icons'
 import Image from '~/components/Image'
 import Search from '../Search'
+import { Link } from 'react-router-dom'
 
 const cx = classNames.bind(styles)
 
 const MENU_ITEMS = [
     {
-        icon: <LanguageIcon className={cx('custom-menu-icon')} />,
+        icon: <LanguageIcon />,
         title: 'English',
         children: {
             title: 'Language',
@@ -44,12 +46,12 @@ const MENU_ITEMS = [
         },
     },
     {
-        icon: <QuestionIcon className={cx('custom-menu-icon')} />,
+        icon: <QuestionIcon />,
         title: 'Feedback and help',
         to: '/feedback',
     },
     {
-        icon: <KeyboardIcon className={cx('custom-menu-icon')} />,
+        icon: <KeyboardIcon />,
         title: 'Keyboard shortcuts',
     },
 ]
@@ -57,12 +59,12 @@ const MENU_ITEMS = [
 function Header(styles) {
     const userMenu = [
         {
-            icon: <UserIcon className={cx('custom-menu-icon')} />,
+            icon: <UserIcon />,
             title: 'View profile',
             to: '/profile',
         },
         {
-            icon: <CoinIcon className={cx('custom-menu-icon')} />,
+            icon: <CoinIcon />,
             title: 'Get coins',
             to: '/coin',
         },
@@ -72,7 +74,7 @@ function Header(styles) {
             to: '/analytic',
         },
         {
-            icon: <SettingIcon className={cx('custom-menu-icon')} />,
+            icon: <SettingIcon />,
             title: 'Settings',
             to: '/setting',
         },
@@ -101,7 +103,9 @@ function Header(styles) {
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
                 <div className={cx('logo')}>
-                    <img src={images.logo} alt="Tiktok" />
+                    <Link to={configRoutes.home}>
+                        <img src={images.logo} alt="Tiktok" />
+                    </Link>
                 </div>
                 <Search />
                 <div className={cx('actions')}>

@@ -9,11 +9,7 @@ export const search = async (q, type = 'less') => {
             },
         })
         return res.data
-        // setSearchResult(res.data)
-        // setLoading(false)
     } catch (error) {
         console.log(error)
-        // setLoading(false)
     }
 }
-search()
