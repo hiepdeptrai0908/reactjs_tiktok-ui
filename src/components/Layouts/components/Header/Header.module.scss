@@ -27,82 +27,6 @@
     }
 }
 
-.search-title {
-    padding: 5px 12px;
-    font-size: 1.4rem;
-    font-weight: 600;
-    color: rgba(22, 24, 35, 0.5);
-}
-
-.search,
-.search-result {
-    width: 361px;
-}
-
-.search {
-    display: flex;
-    position: relative;
-    height: var(--search-height);
-    background-color: #f1f1f2;
-    border: 1.5px solid transparent;
-    border-radius: var(--search-border-radius);
-    padding-left: 16px;
-
-    input {
-        flex: 1;
-        height: 100%;
-        color: var(--black);
-        font-size: 1.6rem;
-        caret-color: var(--primary);
-        background-color: transparent;
-    }
-
-    input:not(:placeholder-shown) ~ .search-btn {
-        color: #4d4e58;
-    }
-
-    &::after {
-        content: '';
-        position: absolute;
-        top: calc(var(--search-top-spacer) - 1.5px);
-        right: var(--search-button-width);
-        width: 1px;
-        height: calc(var(--search-height) - var(--search-top-spacer) * 2);
-        background-color: rgba(24, 22, 35, 0.12);
-    }
-
-    &:focus-within {
-        border-color: rgba(22, 24, 35, 0.2);
-    }
-}
-
-.clear,
-.loading {
-    position: absolute;
-    right: calc(var(--search-button-width) + 16px);
-    top: 50%;
-    transform: translateY(-50%);
-    color: #a6a7ab;
-}
-
-.search-btn {
-    width: var(--search-button-width);
-    height: 100%;
-    border-top-right-radius: var(--search-border-radius);
-    border-bottom-right-radius: var(--search-border-radius);
-    font-size: 1.9rem;
-    color: rgba(22, 24, 35, 0.34);
-
-    &:hover {
-        background-color: rgba(22, 24, 35, 0.03);
-        cursor: pointer;
-    }
-
-    &:active {
-        background-color: rgba(22, 24, 35, 0.06);
-    }
-}
-
 // Action
 .actions {
     display: flex;
@@ -117,6 +41,27 @@
     color: var(--text-color);
     margin-left: 22px;
     cursor: pointer;
+}
+
+.action-btn_inbox {
+    position: relative;
+}
+
+.action-btn_inbox span {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: -2px;
+    right: -4px;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 100%;
+    color: #fff;
+    background-color: #cc2b2b;
+    width: 20px;
+    height: 16px;
+    border-radius: 20px;
 }
 
 .message-icon {
